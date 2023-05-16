@@ -15,9 +15,6 @@ public class HomePage extends Utils {
 
     private By _addToCartAppleMacBook = By.xpath("//div[@class=\"product-grid home-page-product-grid\"]/div[2]/div[2]/div[1]/div[2]/div[3]/div[2]/button[1]");
 
-    private By _welcome = By.cssSelector("div.topic-block-title h2");
-
-
 
     String expectedWelcomeMessage = loadProp.getProperty("expectedWelcomeMessage");
 
@@ -33,12 +30,4 @@ public class HomePage extends Utils {
     }
 
 
-        public void verifyWelcomeMessage(){
-        //capture the welcome message
-        String welcomeMessage = getTextFromElement(_welcome);
-            System.out.println("Welcome message is: "+ welcomeMessage);
-            //Assert to verify the actual message and expected message
-            Assert.assertEquals(welcomeMessage,expectedWelcomeMessage);
-        }
-
-}
+       }
