@@ -31,8 +31,8 @@ public class DriverManager extends Utils{
     }
 
     public static void closeBrowser(){
-        //close browser
-      //  driver.close();
+      //  close browser
+        driver.close();
     }
 
 }
