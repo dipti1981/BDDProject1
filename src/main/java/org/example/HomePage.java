@@ -29,5 +29,18 @@ public class HomePage extends Utils {
         clickOnTheElement(_addToCartAppleMacBook);
     }
 
+    public void getCurrentURl() {
+        String mainWindow = driver.getCurrentUrl();
+        System.out.println("Current url is: " + mainWindow);
+    }
 
-       }
+    public void verifyHomepageURL() {
+        // Assert to verify the homepage url
+        Assert.assertEquals(driver.getCurrentUrl(), loadProp.getProperty("url"), "Url does not match");
+
+
+    }
+    }
+//    private String getCurrentUrl() {
+//    }
+//}

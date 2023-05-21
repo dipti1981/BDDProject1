@@ -4,8 +4,10 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.By;
+import org.testng.Assert;
 
-public class MyStepDefs {
+public class MyStepDefs extends Utils {
     HomePage homePage = new HomePage();
     RegistrationPage registrationPage = new RegistrationPage();
     RegisterResultPage registerResultPage = new RegisterResultPage();
@@ -65,5 +67,28 @@ public class MyStepDefs {
     @Then("I should able to refer a product successfully")
     public void iShouldAbleToReferAProductSuccessfully() {
         productEmailAFriend.verifyTheMessage();
+    }
+
+    @Given("I am on Demo nopcommerce homepage")
+    public void iAmOnDemoNopcommerceHomepage() {
+        homePage.verifyHomepageURL();
+
+    }
+
+    @When("I click on {string} button")
+    public void iClickOnButton(String button_name) {
+        clickOnTheElement(By.xpath("//a[text()='"+button_name+" ']"));
+    }
+
+    @Then("I should able to verify I am nevigated to related page {string} successfully")
+    public void iShouldAbleToVerifyIAmNevigatedToRelatedPageSuccessfully(String page_url) {
+
+        Assert.assertEquals(driver.getCurrentUrl(), page_url);
+    }
+
+    @And("I should able to verify the page title as {string}")
+    public void iShouldAbleToVerifyThePageTitleAs(String page_title) {
+       // Assert.assertEquals((By.tagName("h1")), page_title);
+        Assert.assertEquals(getTextFromElement(By.cssSelector("div.page-title")),page_title);
     }
 }

@@ -16,12 +16,14 @@ public class Hooks extends Utils{
 
     }
    @After
+   //Taking screenshot
     public void tearDOwn(Scenario scenario){
         if (scenario.isFailed()) {
             TakesScreenshot ts = (TakesScreenshot) driver;
             byte[] src = ts.getScreenshotAs(OutputType.BYTES);
             scenario.attach(src, "image/png", "screenshot");
         }
+        //closing browser
         driverManager.closeBrowser();
 
     }
